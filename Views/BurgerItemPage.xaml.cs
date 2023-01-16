@@ -10,9 +10,12 @@ public partial class BurgerItemPage : ContentPage
     bool _flag;
     public int ItemId
     {
-        set { loadBurger(value); }
+        set { loadBurger(value);          
+    }
+
     }
     public BurgerItemPage()
+
     {
         List<Burger> burger = App.BurgerRepo.GetAllBurgers();
         //burgerList.ItemsSource = burger;        
@@ -34,9 +37,9 @@ public partial class BurgerItemPage : ContentPage
         }
     }
 
-    private void OnDeleteClicked(object sender, EventArgs e)
+    private void OnDeleteClicked(int id)
     {
-        App.BurgerRepo.deleteBurger(ItemId);
+        App.BurgerRepo.deleteBurger(id);
         Shell.Current.GoToAsync("..");
     }
     private void OnCancelClicked(object sender, EventArgs e)

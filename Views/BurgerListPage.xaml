@@ -33,16 +33,6 @@
                     FontAttributes="Bold"
                     Margin="20"
                     CornerRadius="20"/>
-            <Button Grid.Row="0" Grid.Column="0" 
-                    BackgroundColor="White"
-                    TextColor="#512bd4"
-                    BorderColor="#512bd4"
-                    BorderWidth="1"
-                    Text="Actualizar" 
-                    FontAttributes="Bold"
-                    Clicked="RefreshData" 
-                    Margin="20"
-                    CornerRadius="20"/>
         </Grid>
     </Grid>
 </ContentPage>
