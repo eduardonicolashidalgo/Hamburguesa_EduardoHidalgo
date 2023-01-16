@@ -1,5 +1,4 @@
 using Hamburguesa_EduardoHidalgo.Models;
-using Hamburguesa_EduardoHidalgo.Data;
 
 namespace Hamburguesa_EduardoHidalgo.Views;
 
