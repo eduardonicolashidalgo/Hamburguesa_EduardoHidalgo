@@ -20,8 +20,13 @@ public partial class BurgerListPage : ContentPage
        List<Burger> burger = App.BurgerRepo.GetAllBurgers();
         burgerList.ItemsSource = burger;
     }
-    private async void SelectedItem(object sender, ItemTappedEventArgs e)
+    private async void SelectedItem(object sender, SelectionChangedEventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(BurgerListPage));
+        if(e.CurrentSelection.Count != 0)
+        {
+            var burgers = (Models.Burger)e.CurrentSelection[0];
+            await Shell.Current.GoToAsync($"{nameof(BurgerItemPage)}?{nameof(BurgerItemPage.ItemId)}={burgers.Id}");
+            burgerList.SelectedItem = null;
+        }
     }
 }

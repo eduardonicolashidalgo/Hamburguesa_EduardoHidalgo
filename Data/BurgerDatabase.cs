@@ -37,12 +37,35 @@ namespace Hamburguesa_EduardoHidalgo.Data
             return burgers;
         }
 
-        public int DeleteBurger(Burger burger)
+        public Burger getID(int id)
         {
             Init();
-            int delete = conn.Delete(burger);
-            return delete;
+            var burger = from b in conn.Table<Burger>()
+                         where b.Id == id
+                         select b;
 
+            return burger.FirstOrDefault();
+        }
+        public void updateData(int id, string name, string description, bool haveCheese)
+        {
+            Init();
+            var burger = conn.Table<Burger>().Where(r => r.Id == id).FirstOrDefault();
+            if (burger != null)
+            {
+                burger.Name = name;
+                burger.Description = description;
+                burger.WithExtraCheese = haveCheese;
+
+                conn.Update(burger);
+            }
+        }
+        public void deleteBurger(int id)
+        {
+            var burger = conn.Table<Burger>().Where(r => r.Id == id).FirstOrDefault();
+            if (burger != null)
+            {
+                conn.Delete(burger);
+            }
         }
     }
 }

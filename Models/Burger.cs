@@ -15,6 +15,6 @@ namespace Hamburguesa_EduardoHidalgo.Models
         [MaxLength(250), Unique]
         public string Name { get; set; }
         public string Description { get; set; }
-        public string WithExtraCheese { get; set; }
+        public bool WithExtraCheese { get; set; }
     }
 }
