@@ -10,6 +10,7 @@ public partial class BurgerItemPage : ContentPage
     bool _flag;
     public int ItemId
     {
+        get { return ItemId; }
         set { loadBurger(value);          
     }
 
@@ -37,9 +38,9 @@ public partial class BurgerItemPage : ContentPage
         }
     }
 
-    private void OnDeleteClicked(int id)
+    private void OnDeleteClicked(object sender, EventArgs e)
     {
-        App.BurgerRepo.deleteBurger(id);
+        App.BurgerRepo.deleteBurger(ItemId);
         Shell.Current.GoToAsync("..");
     }
     private void OnCancelClicked(object sender, EventArgs e)
