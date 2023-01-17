@@ -10,7 +10,7 @@ public partial class BurgerItemPage : ContentPage
     bool _flag;
     public int ItemId
     {
-        get { return ItemId; }
+        get { return Item.Id; }
         set { loadBurger(value);          
     }
 

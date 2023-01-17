@@ -26,9 +26,15 @@ namespace Hamburguesa_EduardoHidalgo.Data
         }
         public int AddNewBurger(Burger burger)
         {
-            Init();
-            int result = conn.Insert(burger);
-            return result;
+            //Init();
+            //int result = conn.Insert(burger);
+            //return result;
+
+            if(burger.Id != 0)
+            {
+                return conn.Update(burger);
+            }
+            return conn.Insert(burger);
         }
         public List<Burger> GetAllBurgers()
         {
@@ -59,13 +65,10 @@ namespace Hamburguesa_EduardoHidalgo.Data
                 conn.Update(burger);
             }
         }
-        public void deleteBurger(int id)
+        public int deleteBurger(Burger burger)
         {
-            var burger = conn.Table<Burger>().Where(r => r.Id == id).FirstOrDefault();
-            if (burger != null)
-            {
-                conn.Delete(burger);
-            }
+            Init();
+            return conn.Delete(burger);
         }
     }
 }
