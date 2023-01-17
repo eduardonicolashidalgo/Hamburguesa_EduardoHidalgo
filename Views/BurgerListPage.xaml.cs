@@ -25,6 +25,6 @@ public partial class BurgerListPage : ContentPage
         if (e.CurrentSelection.FirstOrDefault() is not Burger Item)
             return;
 
-        Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object> { ["Item"] = new Burger() });
+        Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object> { ["Item"] = Item });
     }
 }
