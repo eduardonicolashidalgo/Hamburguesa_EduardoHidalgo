@@ -7,6 +7,8 @@ public partial class BurgerListPage : ContentPage
     public BurgerListPage()
     {
         InitializeComponent();
+        List<Burger> burger = App.BurgerRepo.GetAllBurgers();
+        burgerList.ItemsSource = burger;
         BindingContext = this;
     }
     async void OnItemAdded(object sender, EventArgs e)
