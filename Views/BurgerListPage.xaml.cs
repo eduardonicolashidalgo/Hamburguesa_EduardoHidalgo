@@ -12,7 +12,7 @@ public partial class BurgerListPage : ContentPage
     }
     async void OnItemAdded(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(BurgerItemPage));
+        await Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object> { ["Item"] = new Burger() });        
     }
 
     private void RefreshData(object sender, EventArgs e)
@@ -20,13 +20,11 @@ public partial class BurgerListPage : ContentPage
        List<Burger> burger = App.BurgerRepo.GetAllBurgers();
         burgerList.ItemsSource = burger;
     }
-    private async void SelectedItem(object sender, SelectionChangedEventArgs e)
+    private void SelectedItem(object sender, SelectionChangedEventArgs e)
     {
-        if(e.CurrentSelection.Count != 0)
-        {
-            var burgers = (Models.Burger)e.CurrentSelection[0];
-            await Shell.Current.GoToAsync($"{nameof(BurgerItemPage)}?{nameof(BurgerItemPage.ItemId)}={burgers.Id}");
-            burgerList.SelectedItem = null;
-        }
+        if (e.CurrentSelection.FirstOrDefault() is not Burger Item)
+            return;
+
+        Shell.Current.GoToAsync(nameof(BurgerItemPage), true, new Dictionary<string, object> { ["Item"] = new Burger() });
     }
 }
