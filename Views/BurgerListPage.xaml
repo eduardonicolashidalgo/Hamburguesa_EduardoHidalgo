@@ -33,6 +33,13 @@
                     FontAttributes="Bold"
                     Margin="20"
                     CornerRadius="20"/>
+            <Button Grid.Row="0" Grid.Column="0" 
+                    Text="Actualizar" 
+                    Clicked="RefreshData" 
+                    FontAttributes="Bold"
+                    Margin="20"
+                    CornerRadius="20"/>
         </Grid>
+        
     </Grid>
 </ContentPage>
