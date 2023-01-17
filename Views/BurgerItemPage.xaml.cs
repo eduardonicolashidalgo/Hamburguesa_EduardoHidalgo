@@ -2,45 +2,45 @@ using Hamburguesa_EduardoHidalgo.Models;
 
 namespace Hamburguesa_EduardoHidalgo.Views;
 
-[QueryProperty(nameof(ItemId), nameof(ItemId))]
+[QueryProperty(nameof(Item), nameof(Item))]
 public partial class BurgerItemPage : ContentPage
 {
-    Burger Item = new Burger();
-    Burger aux = new Burger();
+    //Burger Item = new Burger();
+    //Burger aux = new Burger();
     bool _flag;
-    public int ItemId
+    public Burger Item
     {
-        get { return Item.Id; }
-        set { loadBurger(value);          
+        get => BindingContext as Burger;
+        set => BindingContext = value;  
     }
 
-    }
     public BurgerItemPage()
-
-    {
-        List<Burger> burger = App.BurgerRepo.GetAllBurgers();
-        //burgerList.ItemsSource = burger;        
+    {      
         InitializeComponent();                
     }
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-        if (BindingContext == null)
-        {
-            Item.Name = nameB.Text;
-            Item.Description = descB.Text;
-            Item.WithExtraCheese = _flag;
+        //if (BindingContext == null)
+        //{
+        //    Item.Name = nameB.Text;
+        //    Item.Description = descB.Text;
+        //    Item.WithExtraCheese = _flag;
+        //    App.BurgerRepo.AddNewBurger(Item);
+        //}
+        //else
+        //{
             App.BurgerRepo.AddNewBurger(Item);
-        }
-        else
-        {
-            App.BurgerRepo.updateData(aux.Id, aux.Name, aux.Description, aux.WithExtraCheese);
             await Shell.Current.GoToAsync("..");
-        }
+        //}
     }
 
     private void OnDeleteClicked(object sender, EventArgs e)
     {
-        App.BurgerRepo.deleteBurger(ItemId);
+        if(Item.Id == 0)
+        {
+            return;
+        }
+        App.BurgerRepo.deleteBurger(Item);
         Shell.Current.GoToAsync("..");
     }
     private void OnCancelClicked(object sender, EventArgs e)
@@ -52,11 +52,11 @@ public partial class BurgerItemPage : ContentPage
         _flag = e.Value;
     }
 
-    private void loadBurger(int id)
-    {
-        Models.Burger burgerSearch = new Models.Burger();
-        burgerSearch = App.BurgerRepo.getID(id);
-        aux = burgerSearch;
-        BindingContext = burgerSearch;
-    }
+    //private void loadBurger(int id)
+    //{
+    //    Models.Burger burgerSearch = new Models.Burger();
+    //    burgerSearch = App.BurgerRepo.getID(id);
+    //    aux = burgerSearch;
+    //    BindingContext = burgerSearch;
+    //}
 }
