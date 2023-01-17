@@ -17,7 +17,7 @@ public partial class BurgerItemPage : ContentPage
 
     public BurgerItemPage()
     {      
-        InitializeComponent();                
+        InitializeComponent();          
     }
     private async void OnSaveClicked(object sender, EventArgs e)
     {
