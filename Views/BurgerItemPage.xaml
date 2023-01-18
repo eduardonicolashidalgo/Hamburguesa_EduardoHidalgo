@@ -15,12 +15,15 @@ VerticalOptions="StartAndExpand">
             <Label Text="¿Con queso extra?" />
             <CheckBox x:Name="check"
 CheckedChanged="OnCheckBoxCheckedChanged" />
+            <Label Text="Fecha de creacion:"/>
+            <Label x:Name="TimerB" Text="{Binding horaDia}"/>
             <Button Text="Guardar"
  Clicked="OnSaveClicked" />
             <Button Text="Borrar"
  Clicked="OnDeleteClicked" />
             <Button Text="Cancelar"
  Clicked="OnCancelClicked" />
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

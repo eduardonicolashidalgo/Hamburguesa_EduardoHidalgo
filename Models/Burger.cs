@@ -16,5 +16,6 @@ namespace Hamburguesa_EduardoHidalgo.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public bool WithExtraCheese { get; set; }
+        public DateTime horaDia { get; set; }
     }
 }
